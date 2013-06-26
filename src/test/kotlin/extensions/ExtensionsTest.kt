@@ -2,7 +2,10 @@ package extensions
 
 import junit.framework.TestCase
 import org.junit.Assert.assertNotSame
+import org.junit.Assert.assertThat
 import kotlin.test.assertEquals
+import org.hamcrest.Matchers.*
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,7 +21,7 @@ class ExtensionsTest : TestCase() {
        val filtered = arr.filter { x -> x > 2 }
 
        assertNotSame(filtered, arr)
-       // assertEquals(filtered, array(3,4,5)) // hm filtered array has different type than the original ...
-
+       // assertEquals(filtered, array(3,4,5)) // hm ... filtered array has different type than the original ...
+       assertThat(filtered, everyItem(greaterThan(2)))
     }
 }
