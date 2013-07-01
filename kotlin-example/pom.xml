@@ -37,6 +37,11 @@
             <artifactId>kotlin-stdlib</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-js-library</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>
@@ -60,9 +65,21 @@
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <version>${kotlin.version}</version>
-
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-js-library</artifactId>
+                        <version>${kotlin.version}</version>
+                    </dependency>
+                </dependencies>
                 <configuration/>
                 <executions>
+                    <execution>
+                        <id>js</id>
+                        <goals>
+                            <goal>js</goal>
+                        </goals>
+                    </execution>
                     <execution>
                         <id>compile</id>
                         <phase>compile</phase>
@@ -79,22 +96,22 @@
                     </execution>
                 </executions>
             </plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.2.1</version>
-				<executions>
-					<execution>
-						<phase>test</phase>
-						<goals>
-							<goal>java</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<mainClass>hello.HelloPackage</mainClass>
-				</configuration>
-			</plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>hello.HelloPackage</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
