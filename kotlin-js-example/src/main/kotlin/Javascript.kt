@@ -11,9 +11,15 @@ fun main(args: Array<String>) {
 
 public class Kotlin2Javascript {
     fun fill(){
+        val items = array("a","b","c")
         jq {
             val container = jq("#container")
             container.append("<b>Hello, World!</b>")
+            container.append("<ul>")
+            for(s in items)
+                container.append("<li>$s</li>")
+
+            container.append("</ul>")
         }
     }
 }
